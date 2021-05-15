@@ -33,10 +33,10 @@ router.get("/:id", (req, res) => {
     },
     include: {
       model: Product,
-      attributes: ["id", "product_name", "price", "stock", "categorg_id"],
+      // attributes: ["id", "product_name", "price", "stock", "categorg_id"],
     }
   }).then(dbCategoryData => {
-    if (dbCategoryData) {
+    if (!dbCategoryData) {
       res.status(404).json({ message: "No categories found" });
       return;
     }
