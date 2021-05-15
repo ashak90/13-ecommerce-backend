@@ -9,34 +9,34 @@ router.get("/", (req, res) => {
   Category.findAll({
     include: {
       model: Product,
-      attributes: ["id", "product_name", "price", "stock", "categorg_id"],
+      // attributes: ["id", "product_name", "price", "stock", "categorg_id"],
     },
-  }).then((dbCategoryData) => {
-    if (dbCategoryData) {
+  }).then(dbCategoryData => {
+    if (!dbCategoryData) {
       res.status(404).json({ message: "No categories found" });
       return;
     }
     res.json(dbCategoryData);
   })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err)
-  });
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err)
+    });
 });
 
 router.get("/:id", (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
   Category.findOne({
-    where:{
+    where: {
       id: req.params.id
     },
     include: {
-      model:Product,
+      model: Product,
       attributes: ["id", "product_name", "price", "stock", "categorg_id"],
     }
   }).then(dbCategoryData => {
-    if (dbCategoryData){
+    if (dbCategoryData) {
       res.status(404).json({ message: "No categories found" });
       return;
     }
@@ -53,11 +53,11 @@ router.post("/", (req, res) => {
   Category.create({
     category_name: req.body.category_name
   })
-  .then(dbData => res.json(dbCategoryData))
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err)
-  });
+    .then(dbData => res.json(dbCategoryData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err)
+    });
 });
 
 router.put("/:id", (req, res) => {
@@ -67,7 +67,7 @@ router.put("/:id", (req, res) => {
       id: req.params.id
     }
   }).then(dbCategoryData => {
-    if (dbCategoryData){
+    if (dbCategoryData) {
       res.status(404).json({ message: "No categories found" });
       return;
     }
@@ -85,7 +85,7 @@ router.delete("/:id", (req, res) => {
       id: req.params.id
     }
   }).then(dbCategoryData => {
-    if (dbCategoryData){
+    if (dbCategoryData) {
       res.status(404).json({ message: "No categories found" });
       return;
     }
