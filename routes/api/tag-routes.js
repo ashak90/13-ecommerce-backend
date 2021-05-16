@@ -33,7 +33,7 @@ router.get("/:id", (req, res) => {
       // attributes: ["product_name", "price", "stock", "category_id"],
     },
   })
-    .then((dbTagData) => res.json(dbTagData))
+    .then(dbTagData => res.json(dbTagData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -43,7 +43,7 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   // create a new tag
   Tag.create({
-    tag_name: req.params.tag_name
+    tag_name: req.body.tag_name
   })
     .then((dbTagData) => res.json(dbTagData))
     .catch((err) => {
@@ -74,7 +74,7 @@ router.put("/:id", (req, res) => {
 
 router.delete("/:id", (req, res) => {
   // delete on tag by its `id` value
-  Tag.delete({
+  Tag.destroy({
     where: {
       id: req.params.id
     }
