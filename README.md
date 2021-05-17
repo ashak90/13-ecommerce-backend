@@ -25,7 +25,7 @@
   To install this project: first download all of the files in this repository. Then open those files in VS code. Run the terminal in VS code. Be sure you are targeting the current directory and then run npm install or add the dependencies individually by using npm i. 
 
   ## Usage
-  To use this project. Once you have completed the installation instructions, Run npm start in the terminal ( making sure you are in the root directory). From here use Postman or Insomnia to trest the routes using the information needed from the code. 
+  To use this project. Once you have completed the installation instructions, use the CLI to log into MySQL and run source db/schema.sql. Once you've done that run npm run seeds and npm start in the terminal ( making sure you are in the root directory). From here use Postman or Insomnia to trest the routes using the information needed from the code. 
 
   ## License 
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
